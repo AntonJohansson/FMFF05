@@ -1,6 +1,6 @@
 % Variabler
 
-rot_energinivaer = 20????;
+rot_energinivaer = 20;
 vib_energinivaer = 20;
 
 % H2
@@ -36,14 +36,25 @@ D_w = (M*omega^2)/(a^2*2*h*c);
 
 fprintf('Rotationsenergier:\nn\tE_n\t\tlambda\n');
 
-E_rot = zeros(1,rot_energinivaer);
+E_rot_korr      = zeros(1,rot_energinivaer);
+E_rot_korr_distance = zeros(1,rot_energinivaer-1);
+%E_rot_no_korr   = zeros(1,rot_energinivaer);
 
 for (n = 0:rot_energinivaer)
-    E_rot(n+1) = (n*(n+1)*hbar^2)/(2*M*R_e^2) - D*n^2*(n+1)^2;
-    lambda = h*c/E_rot(n+1);
+    E_rot_korr(n+1)          = (n*(n+1)*hbar^2)/(2*M*R_e^2) - D*n^2*(n+1)^2;
     
-    fprintf('%i\t%e\t%e\n', n, E_rot(n+1), lambda);
-end
+    if n > 0
+        E_rot_korr_distance(n) = E_rot_korr(n+1) - E_rot_korr(n);
+    end
+    
+    %E_rot_no_korr(n+1)  = (n*(n+1)*hbar^2)/(2*M*R_e^2);
+    lambda = h*c/E_rot_korr(n+1);
+    
+    %fprintf('%i\t%e\t%e\n', n, E_rot_korr(n+1), lambda);
+end 
+
+fprintf('\nMedelavstand rot eng: %e    Vaglangd: %e\n', mean(E_rot_korr_distance)./(1.6022e-19), h*c/mean(E_rot_korr_distance));
+fprintf('Maxavstand rot eng:   %e    Vaglangd: %e\n', max(E_rot_korr_distance)./(1.6022e-19), h*c/max(E_rot_korr_distance));
 
 % Vibration (morse)
 
@@ -55,7 +66,7 @@ for (n = 0:vib_energinivaer)
     E_vib(n + 1) = (0.5 + n)*hbar*omega - (0.5 + n)^2*hbar*omega_xe;
     lambda = h*c/(E_vib(n+1) - E_vib(1));
     
-    fprintf('%i\t%e\t%e\n', n, E_vib(n+1), lambda); 
+    %fprintf('%i\t%e\t%e\n', n, E_vib(n+1), lambda); 
 end
 
 % Plot all the things
@@ -73,7 +84,7 @@ for(n=0:rot_energinivaer)
     P = InterX([x;y], [x;E_rot(n+1)*ones(1,length(x))]);
     if ~isempty(P)
         x1 = linspace(P(1,1),P(1,2))./(1e-10);
-        y1 = E_rot(n+1)*ones(1,length(x1));
+        y1 = E_rot_korr(n+1)*ones(1,length(x1));
         p_rot = plot(x1, y1/(1.6022e-19), 'b');
     end
 end
@@ -87,7 +98,7 @@ for (n=0:vib_energinivaer)
 end
 
 % Plot settings
-ylim([0 (E(end) + 1e-20)/(1.6022e-19)]);
+ylim([0 (E_vib(end) + 3e-20)/(1.6022e-19)]);
 xlim([(P(1,1)-0.25e-10)/(1e-10) (P(1,2)+0.25e-10)/(1e-10)]);
 
 xlabel('$\Delta R$ (\AA)', 'Interpreter', 'latex', 'FontSize', 18);
@@ -101,6 +112,25 @@ box on;
 grid on;
 
 title('Vibrations- och rotationsenerginiv{\aa}er', 'Interpreter', 'latex', 'FontSize', 18);
+
+% Plot korr och icke-korr f?r rot
+
+figure;
+
+x_korr      = linspace(-1e-10,-0.1e-10, 100) ./ (1e-10);
+
+for(n=0:rot_energinivaer)
+    y_korr = E_rot_korr(n+1)*ones(1,length(x_korr));
+    p_rot = plot(x_korr, y_korr/(1.6022e-19), 'b');
+    hold on;
+end
+
+%grid on;
+box on;
+
+xlabel('Enhetsl\"os', 'Interpreter', 'latex', 'FontSize', 18);
+ylabel('Energi (eV)', 'Interpreter', 'latex', 'FontSize', 18);
+title('Centrifugalkorrigerade rotationsenerginiv{\aa}er f\"or CO', 'Interpreter', 'latex', 'FontSize', 18);
 
 %% Vibration (kvadratisk approx.)
 
