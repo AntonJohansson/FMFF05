@@ -1,0 +1,44 @@
+Vad är målet med själva presentationen?
+	- Undersöka hur strålning interagerar med atmosfären,
+	- Vad som definierar en växthusgas,
+	- Hur gaser påverkar atmosfären,
+	- Varför fokus på co2?,
+	- Vi behöver förstå atmosfären och våran påverkan på den 
+	  för att komma på långsiktiga lösningar.
+
+Spektralfördelning jorden:
+	Vad vill jag ha sagt med denna del?
+		Gaser i atmosfären absorberar ofta en viss våglängd medan de släpper igenom en annan.
+		Jordens atmosfär absorberar eller reflekterar inkommande kortvågig strålning.
+		Jorden emmiterar långvågig strålning.
+		Hur interagerar denna långvågiga strålning med atmosfären?
+		Jordens temperatur beror på balensen mellan inkommande och utgående strålning; eftersom atmosfären absorberar den långvågig utgående strålningen från Jorden är temperaturen högre än den skulle varit utan atmosfär.
+		Jordens medeltemperatur påverkas
+
+	Anteckningar:
+		Jordens temp approximeras T = 290 K.
+		Wiens => lambda_max = 10 um.
+		Jorden emitterar främst infrarödd ljus.
+		
+
+Rotaions- och vibrationsenergier:
+	Vad vill jag ha sagt:
+		Hur tar molekyler i atmosfären upp strålning?
+	
+	Tittar vi exempelvis på den enklastes atmomen, väteatomen, ser vi att den absorberar stårlningen med följande våglängder; Eftersom dessa våglängder inte är i samma storleksordning som Jordens emiterade strålning kan vi dra slutsatsen att Jordens emiterade energi inte absorberas genom elektronexcitation.
+	
+	Om man vi istället undersökerer molekylers rotation och vibration genom att bilda en förenkad modell så ser vi istället att majoriteten av jordens stårlning kommer absorberas genom antingen vibration eller en kombination av rotaion och vibration.
+
+	Men hur påverkar strålning en molekyls rotation och vibration? kan alla molekyler ta upp energi via rotation och vibration?
+
+...
+
+LBLRTM:
+	N2:			-3.81e-1
+	N2O:        3.00e-1
+	H20:		4.53e+0
+	CO2:		1.20e+0
+	CH4:		2.34e-1
+	CH4 (8x):	9.12e-1
+
+Hållbarhet:
