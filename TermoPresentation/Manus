@@ -34,11 +34,27 @@ Rotaions- och vibrationsenergier:
 ...
 
 LBLRTM:
-	N2:			-3.81e-1
-	N2O:        3.00e-1
-	H20:		4.53e+0
-	CO2:		1.20e+0
-	CH4:		2.34e-1
-	CH4 (8x):	9.12e-1
+	För att få lite mer data om hur strålningen ut från jorden interagerar med atmosfären använde vi ett program som heter lblrtm, som funkar genom att man ger den en profil av atmosfären (temperaturer, tryck, koncentrationer etc.) i vårt fall använde vi programmet för att se hur mycket av jordens utrstrålning som absorberas av atmosfären.
+
+	Hår har vi resultaten från körningen av detta program,
+	på x-axeln har vi det spektrala vågnummret som är lika med 1 över ljusets vågläng, och på y-axeln har vi en lite krånglig enhet, men den beskriver egentligen genomstrålningen i W/m^2 per vinkel per vågnummer som även kallas för den spektrala radiansen. 
+
+	"Mätningen" görs här vi 20 km höjd i atmosfären.
+
+	Ni behöver inte stirra er blind på det utan vi fokuserar på graften istället.
+
+	Kurvan följär ändå planckkurvorna för 300 K rätt bra, men vi kan se en del dippar,den största här beror troligtvis på koldioxid, eftersom koldioxid har hög absorption för ungefär 14 um eller 700 1/cm om man vill tänka i vågnummer.
+
+	Vad skulle då hända om vi dubblade koldioxidkoncentrationen från 330 till 660 ppm?
+	Den röda grafen är här genomstrålningen efter att vi dubblerat koncentrationen. Som vi kan se så minskar kurvan en liten bit strax runt det här gapet, vilket betyer att kolxioden har tagit upp mer energi, och om vi integrerar och räknar ut skillnaden i area mellan dessa två grafer får vi fram
+	
+		DF = 1.2e0 -> dt = 3 K
+	
+	N2:			-3.81e-1 -> DT = -0.9525
+	N2O:        3.00e-1  -> DT = 0.75
+	H20:		4.53e+0  -> DT = 11.325
+	CO2:		1.20e+0  -> DT = 3
+	CH4:		2.34e-1  -> DT = 0.585
+	CH4 (8x):	9.12e-1  -> DT = 2.28
 
 Hållbarhet:
